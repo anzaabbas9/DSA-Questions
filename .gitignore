@@ -14,7 +14,7 @@ obj/
 Debug/
 Release/
 
-# IDE/editor files
+# Editor / IDE files
 .vscode/
 *.code-workspace
 
