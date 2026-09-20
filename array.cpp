@@ -10,7 +10,7 @@ cout<<"enter value you want to insert:";
 cin>>value;
 cout<<"enter position at which you want to insert:";
 cin>>pos;
-// for sorted array 
+// for sorted array
 //for(int i=size-1;i>=pos-1;i--){
 //a[i+1]=a[i];
 //}
@@ -51,19 +51,22 @@ else
 cout<<"invalid position!!";
 }*/
 //********************AARAY AND POINTER*********************
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main(){
-int a[5]={2,4,6,8,9};
-int *p=a;
-//p++;
-//cout<<*a+1<<endl;
-cout<<*(a+1)<<endl;
-for(int i=0;i<5;i++){
-    //cout<<(a+i)<<"   ";
-   // cout<<*(p+i)<<" ";
-   //cout<<i[a]<<" ";
-   //cout<<endl<<i[p]<<" ";
-   //cout<<a[i]<<" ";
-   cout<<p[i]<<" ";
-}}
+int main()
+{
+    int a[5] = {2, 4, 6, 8, 9};
+    int *p = a;
+    // p++;
+    // cout<<*a+1<<endl;
+    cout << *(a + 1) << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        // cout<<(a+i)<<"   ";
+        // cout<<*(p+i)<<" ";
+        // cout<<i[a]<<" ";
+        // cout<<endl<<i[p]<<" ";
+        // cout<<a[i]<<" ";
+        cout << p[i] << " ";
+    }
+}
