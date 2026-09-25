@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿/*#include <iostream>
 using namespace std;
 
 const int SIZE = 5;
@@ -95,4 +95,28 @@ void display() {
         cout << stack[i] << " ";
     }
     cout << endl;
-}
+}*/
+//***********************PALINDROME WORD*************************
+/*#include<iostream>
+using namespace std;
+int main(){
+    char a[5]={'m','o','d','e','m'};
+    char b[5];
+    int top=-1;
+    for(int i=0;i<5;i++){
+       top++;
+       b[top]=a[i];
+    }
+    bool ispalindrome=true;
+    for(int j=0;j<5;j++){
+        if(b[top--]!=a[j]){
+        ispalindrome=false;
+        break;
+        }
+    }
+    if(ispalindrome){
+        cout<<"palindrome!!";
+    }else
+    cout<<"not a palindrome!!";
+    return 0;
+}*/
