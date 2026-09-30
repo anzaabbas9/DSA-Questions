@@ -120,3 +120,46 @@ int main(){
     cout<<"not a palindrome!!";
     return 0;
 }*/
+#include <iostream>
+#include<stack>
+#include<string>
+using namespace std;
+
+bool isbalanced(const string& expression) {
+    stack<char> braces;
+
+    for (char character : expression) {
+        if (character == '(' || character == '[' || character == '{') {
+            braces.push(character);
+        } else if (character == ')' || character == ']' || character == '}') {
+            if (braces.empty()) {
+                return false;
+            }
+
+            char opening = braces.top();
+            braces.pop();
+
+            if ((character == ')' && opening != '(') ||
+                (character == ']' && opening != '[') ||
+                (character == '}' && opening != '{')) {
+                return false;
+            }
+        }
+    }
+
+    return braces.empty();
+}
+
+int main() {
+    string expression;
+    cout << "Enter an expression: ";
+    getline(cin, expression);
+
+    if (isbalanced(expression)) {
+        cout << "Balanced expression.\n";
+    } else {
+        cout << "Not a balanced expression.\n";
+    }
+
+    return 0;
+}
