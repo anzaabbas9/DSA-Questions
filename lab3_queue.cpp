@@ -167,7 +167,7 @@ int main()
 	return 0;
 }*/
 //************************PRIORITY QUEUE***************************
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 int queue[100];
@@ -223,4 +223,4 @@ int main()
 	dequeue();
 
 	return 0;
-}
+}*/
