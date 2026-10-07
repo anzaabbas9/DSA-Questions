@@ -76,7 +76,7 @@ int main()
 	return 0;
 }*/
 //*****************CIRCULAR QUEUE*******************
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 #define N 5
 int queue[N];
@@ -143,9 +143,6 @@ void peak()
 }
 int main()
 {
-	/*int x;
-	cout << "enter a value:";
-	cin >> x;*/
 	enqueue(2);
 	enqueue(5);
 	display();
@@ -153,6 +150,7 @@ int main()
 	dequeue();
 	peak();
 	display();
+
 	enqueue(-1);
 	display();
 	enqueue(10);
@@ -161,10 +159,68 @@ int main()
 	display();
 	enqueue(6);
 	display();
+
 	dequeue();
 	enqueue(8);
 	display();
 
+	return 0;
+}*/
+//************************PRIORITY QUEUE***************************
+#include <iostream>
+using namespace std;
+
+int queue[100];
+int priority[100];
+int count = 0;
+void enqueue(int x, int p)
+{
+	queue[count] = x;
+	priority[count] = p;
+	count++;
+}
+void dequeue()
+{
+	if (count == 0)
+	{
+		cout << "queue is empty!!";
+		return;
+	}
+	int highest = 0;
+	for (int i = 1; i < count; i++)
+	{
+		if (priority[i] > priority[highest])
+		{
+			highest = i;
+		}
+	}
+	cout << "removed:" << queue[highest]<<endl;
+	for (int i = highest; i < count - 1; i++)
+	{
+		queue[i] = queue[i + 1];
+		priority[i] = priority[i + 1];
+	}
+	count--;
+}
+void display()
+{
+	for (int i = 0; i < count; i++)
+	{
+		cout << queue[i] << "(" << priority[i] << ")"<<" ";
+	}
+	cout << endl;
+}
+int main()
+{
+	enqueue(10, 2);
+	enqueue(20, 5);
+	enqueue(30, 1);
+	enqueue(40, 4);
+
+	display();
+
+	dequeue();
+	dequeue();
 
 	return 0;
 }
