@@ -1,0 +1,422 @@
+LAB2_STACK.cpp - Line by Line Explanation with Code Scope
+=======================================================
+
+Overview:
+This file is not one single program. It contains 3 different examples, and the first two are commented out. The active program at the bottom checks whether a mathematical expression has balanced brackets using a stack.
+
+Important note:
+- The first example is a stack menu program (commented out).
+- The second example is a palindrome checker (commented out).
+- The third example is the real working code.
+
+------------------------------------------------------------
+SECTION 1: COMMENTED OUT STACK MENU PROGRAM
+(Original code starts at line 1 and ends at line 98)
+------------------------------------------------------------
+
+Line 1: /*#include <iostream>
+Scope: Global header inclusion
+Meaning: Includes the standard input/output stream library so cout and cin can be used.
+
+Line 2: using namespace std;
+Scope: Global namespace
+Meaning: Makes standard C++ identifiers such as cout, cin, string, and stack available without writing std:: before them.
+
+Line 4: const int SIZE = 5;
+Scope: Global scope
+Meaning: Creates a constant integer named SIZE with value 5. It sets the maximum number of elements in the stack.
+
+Line 5: int top = -1;
+Scope: Global scope
+Meaning: Declares a global variable top that stores the index of the top of the stack. -1 means the stack is empty.
+
+Line 6: int stack[SIZE];
+Scope: Global scope
+Meaning: Creates a fixed-size integer array named stack with 5 elements.
+
+Lines 8-11:
+void push();
+void pop();
+void peek();
+void display();
+Scope: Global function declarations
+Meaning: These are function prototypes. They tell the compiler that these functions will be defined later.
+
+Line 13: int main() {
+Scope: Function scope of main
+Meaning: This is the main entry point of the program. The program starts execution from here.
+
+Line 14: int ch;
+Scope: Local scope inside main
+Meaning: Declares variable ch to store the user's menu choice.
+
+Line 16: do {
+Scope: Block scope inside main
+Meaning: Starts a do-while loop. The menu is shown at least once before checking the ending condition.
+
+Lines 17-23:
+cout << "\nMenu:\n";
+cout << "1. push()\n";
+cout << "2. pop()\n";
+cout << "3. peek()\n";
+cout << "4. display()\n";
+cout << "0. exit\n";
+cout << "Enter your choice: ";
+Scope: Block scope of do-loop
+Meaning: Displays the menu options to the user and asks for input.
+
+Line 24: cin >> ch;
+Scope: Block scope of do-loop
+Meaning: Reads the user's choice and stores it in ch.
+
+Line 26: switch (ch) {
+Scope: Block scope inside main
+Meaning: Checks the value of ch and runs the matching case.
+
+Lines 27-44:
+case 1: push(); break;
+case 2: pop(); break;
+case 3: peek(); break;
+case 4: display(); break;
+case 0: cout << "Exiting...\n"; break;
+default: cout << "Invalid choice!!\n";
+Scope: Switch block
+Meaning: Each case calls a different stack function. The default case handles invalid input.
+
+Line 45: } while (ch != 0);
+Scope: do-while loop condition
+Meaning: Repeats the menu until the user enters 0.
+
+Line 47: return 0;
+Scope: main function
+Meaning: Exits the program successfully.
+
+Line 48: }
+Scope: End of main
+Meaning: Closes the main function.
+
+Line 50: void push() {
+Scope: Global function scope
+Meaning: Defines the function that inserts a value into the stack.
+
+Line 51: int x;
+Scope: Local scope inside push
+Meaning: Creates a local variable to store the value entered by the user.
+
+Lines 53-56:
+if (top >= SIZE - 1) {
+    cout << "Overflow!!\n";
+    return;
+}
+Scope: Block scope inside push
+Meaning: Checks if the stack is full. If top is already at the last valid index, the stack cannot accept more values.
+
+Lines 58-62:
+cout << "Enter value to insert: ";
+cin >> x;
+top++;
+stack[top] = x;
+cout << "Inserted: " << x << endl;
+Scope: push function
+Meaning: Takes user input, increases top, stores the value in the stack, and prints a confirmation.
+
+Line 63: }
+Scope: End of push
+Meaning: Ends the push function.
+
+Line 65: void pop() {
+Scope: Global function scope
+Meaning: Defines the function to remove the top element from the stack.
+
+Line 66: int item;
+Scope: Local scope inside pop
+Meaning: Stores the value removed from the top of the stack.
+
+Lines 68-71:
+if (top == -1) {
+    cout << "Underflow!!\n";
+    return;
+}
+Scope: Block scope inside pop
+Meaning: Checks whether the stack is empty before trying to remove an element.
+
+Lines 73-75:
+item = stack[top];
+cout << "Popped item is: " << item << endl;
+top--;
+Scope: pop function
+Meaning: Reads the top element, prints it, then decreases top to remove it logically from the stack.
+
+Line 76: }
+Scope: End of pop
+Meaning: Ends the pop function.
+
+Line 78: void peek() {
+Scope: Global function scope
+Meaning: Defines a function to view the top element without removing it.
+
+Lines 79-82:
+if (top == -1) {
+    cout << "Stack is empty\n";
+    return;
+}
+Scope: Block scope inside peek
+Meaning: Checks if the stack is empty before trying to display the top item.
+
+Line 84: cout << "Top item is: " << stack[top] << endl;
+Scope: peek function
+Meaning: Prints the element at the current top index.
+
+Line 85: }
+Scope: End of peek
+Meaning: Ends the peek function.
+
+Line 87: void display() {
+Scope: Global function scope
+Meaning: Defines a function that prints all stack values from top to bottom.
+
+Lines 88-91:
+if (top == -1) {
+    cout << "Stack is empty!!\n";
+    return;
+}
+Scope: Block scope inside display
+Meaning: Checks if the stack is empty before printing values.
+
+Line 93: cout << "Stack: ";
+Scope: display function
+Meaning: Prints a label before showing the stack contents.
+
+Lines 94-96:
+for (int i = top; i >= 0; i--) {
+    cout << stack[i] << " ";
+}
+Scope: Loop scope inside display
+Meaning: This loop goes from the current top index downward to zero, printing all stack items from top to bottom.
+
+Line 97: cout << endl;
+Scope: display function
+Meaning: Moves to the next line after printing the stack.
+
+Line 98: */
+Scope: Comment end
+Meaning: This comment block ends here. This whole stack program is not active in the file anymore.
+
+------------------------------------------------------------
+SECTION 2: COMMENTED OUT PALINDROME EXAMPLE
+(Original code starts at line 99 and ends at line 122)
+------------------------------------------------------------
+
+Line 99: //***********************PALINDROME WORD*************************
+Scope: Comment line
+Meaning: This is a heading comment for the next example.
+
+Line 100: /*#include<iostream>
+Scope: Comment start
+Meaning: The compiler ignores this line because it is inside a block comment.
+
+Line 101: using namespace std;
+Scope: Global namespace
+Meaning: Same purpose as before: allows standard names without std::.
+
+Line 102: int main(){
+Scope: Function scope of main
+Meaning: Starts the palindrome program.
+
+Line 103: char a[5] = {'m','o','d','e','m'};
+Scope: Local scope inside main
+Meaning: Creates a character array a containing the word "modem".
+
+Line 104: char b[5];
+Scope: Local scope inside main
+Meaning: Another array b used to reverse or compare characters.
+
+Line 105: int top = -1;
+Scope: Local scope inside main
+Meaning: top is used as an index for the second array b.
+
+Lines 106-109:
+for(int i=0;i<5;i++){
+    top++;
+    b[top]=a[i];
+}
+Scope: Loop scope inside main
+Meaning: Copies the characters of a into b in the same order while increasing top.
+
+Line 110: bool ispalindrome = true;
+Scope: Local scope inside main
+Meaning: Declares a boolean variable that assumes the word is a palindrome until proven otherwise.
+
+Lines 111-116:
+for(int j=0;j<5;j++){
+    if(b[top--]!=a[j]){
+        ispalindrome = false;
+        break;
+    }
+}
+Scope: Loop scope inside main
+Meaning: Compares characters from the end of b to the start of a. If any pair does not match, the value becomes false.
+
+Lines 117-120:
+if(ispalindrome){
+    cout << "palindrome!!";
+}else
+    cout << "not a palindrome!!";
+Scope: Conditional block
+Meaning: Prints the result depending on whether the word is a palindrome.
+
+Line 121: return 0;
+Scope: main function
+Meaning: Ends the program successfully.
+
+Line 122: */
+Scope: Comment end
+Meaning: Ends the second commented-out program. This example is not active.
+
+------------------------------------------------------------
+SECTION 3: ACTIVE PROGRAM (WORKING CODE)
+(Lines 123 to 165 are active and executed by the compiler)
+------------------------------------------------------------
+
+Line 123: #include <iostream>
+Scope: Global header inclusion
+Meaning: Includes standard input and output support for cout/cin.
+
+Line 124: #include<stack>
+Scope: Global header inclusion
+Meaning: Includes the C++ STL stack library, which gives us the stack container.
+
+Line 125: #include<string>
+Scope: Global header inclusion
+Meaning: Includes string support for using the string data type.
+
+Line 126: using namespace std;
+Scope: Global namespace
+Meaning: Makes standard library names available without the std:: prefix.
+
+Line 128: bool isbalanced(const string& expression) {
+Scope: Global function definition
+Meaning: Defines a function named isbalanced that takes a constant string reference and returns true or false.
+
+Line 129: stack<char> braces;
+Scope: Local variable inside isbalanced
+Meaning: Creates an empty stack named braces that stores characters. This stack is used to match opening and closing brackets.
+
+Line 131: for (char character : expression) {
+Scope: Loop scope inside isbalanced
+Meaning: Iterates through every character in the input string.
+
+Lines 132-134:
+if (character == '(' || character == '[' || character == '{') {
+    braces.push(character);
+} else if (character == ')' || character == ']' || character == '}') {
+    if (braces.empty()) {
+        return false;
+    }
+Scope: Conditional block inside the loop
+Meaning: If the character is an opening bracket, it is pushed onto the stack. If it is a closing bracket, the program first checks whether the stack is empty. If empty, the expression cannot be balanced, so it immediately returns false.
+
+Lines 139-146:
+char opening = braces.top();
+braces.pop();
+
+if ((character == ')' && opening != '(') ||
+    (character == ']' && opening != '[') ||
+    (character == '}' && opening != '{')) {
+    return false;
+}
+Scope: Matching logic block
+Meaning: Looks at the top of the stack (the most recent opening bracket), removes it, and checks whether it matches the current closing bracket. If types do not match, the expression is not balanced.
+
+Line 148: }
+Scope: End of if-else block
+Meaning: Closes the conditional structure inside the loop.
+
+Line 150: return braces.empty();
+Scope: End of isbalanced function
+Meaning: After scanning all characters, if the stack is empty, all opening brackets were matched correctly and the expression is balanced. Otherwise, some bracket was left unmatched.
+
+Line 151: }
+Scope: End of function
+Meaning: Ends the isbalanced function.
+
+Line 153: int main() {
+Scope: Function scope of main
+Meaning: Starts the real program that reads user input and checks whether it is balanced.
+
+Line 154: string expression;
+Scope: Local variable inside main
+Meaning: Stores the user-entered expression.
+
+Line 155: cout << "Enter an expression: ";
+Scope: main function
+Meaning: Prompts the user to enter an expression such as (a+b) or {[()}].
+
+Line 156: getline(cin, expression);
+Scope: main function
+Meaning: Reads the whole line including spaces and special characters, and stores it in the expression string.
+
+Line 158: if (isbalanced(expression)) {
+Scope: Conditional block in main
+Meaning: Calls the isbalanced function with the input string and checks its result.
+
+Lines 159-161:
+cout << "Balanced expression.\n";
+} else {
+    cout << "Not a balanced expression.\n";
+}
+Scope: If-else block
+Meaning: Prints a success message when the brackets are balanced; otherwise prints a failure message.
+
+Line 164: return 0;
+Scope: main function
+Meaning: Exits the program successfully.
+
+Line 165: }
+Scope: End of main
+Meaning: Ends the entire program.
+
+------------------------------------------------------------
+SUMMARY OF CODE SCOPE TYPES USED IN THIS FILE
+------------------------------------------------------------
+
+1. Global scope
+- Variables/functions declared outside any function
+- Example: SIZE, top, stack, and isbalanced
+
+2. Local scope
+- Variables declared inside functions or blocks
+- Example: ch, x, item, expression, character, opening
+
+3. Block scope
+- Code inside loops, if/else, switch, or braces
+- Example: the do-while menu loop and the for loop inside isbalanced
+
+4. Function scope
+- Each function has its own local environment
+- Example: main(), push(), pop(), peek(), display(), isbalanced()
+
+5. Loop scope
+- Variables declared within a for loop stay inside that loop block
+- Example: int i = top, int j = 0, and char character in the loop
+
+------------------------------------------------------------
+What this final active code is doing
+------------------------------------------------------------
+The final working program uses a stack to verify whether a bracket sequence is valid.
+Examples:
+- (a+b) -> Balanced
+- [2 + {3*4}] -> Balanced
+- (a + [b] -> Not balanced
+- {[(])} -> Not balanced
+
+Algorithm:
+1. Read the expression.
+2. Traverse every character.
+3. If it is an opening bracket, push it onto the stack.
+4. If it is a closing bracket, check the top of the stack.
+5. If it matches, pop it.
+6. If not, return false.
+7. After processing the full string, if the stack is empty, the expression is balanced.
+
+This is a standard stack-based matching method used in expression validation.
