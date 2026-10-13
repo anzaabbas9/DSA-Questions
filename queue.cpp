@@ -1,5 +1,5 @@
 //**************************IMPLEMENT QUEUE USING STACK*********************
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 #define N 5
 int stack1[N], stack2[N];
@@ -90,4 +90,135 @@ int main()
     enqueue(7);
     dequeue();
     display();
+}*/
+//*****************************DEQUE IMPLEMENTATION USING CIRCULAR ARRAY***************************
+#include <iostream>
+using namespace std;
+#define N 5
+int deque[N];
+int f=-1;
+int  r = -1;
+void enqueuefront(int x)
+{
+    if (f == r + 1 || (f == 0 && r == N - 1))
+    {
+        cout << "overflow!!" << endl;
+    }
+    else if (f == -1 && r == -1)
+    {
+        f = r = 0;
+        deque[f]=x;
+    }
+    else if (f == 0)
+    {
+        f = N-1;
+        deque[f]=x;
+    }
+    else{
+        f--;
+    deque[f]=x;}
+}
+void enqueuerear(int x)
+{
+    if (f == r + 1 || (f == 0 && r == N - 1))
+    {
+        cout << "overflow!!" << endl;
+    }
+    else if (f == -1 && r == -1)
+    {
+        f = r = 0;
+        deque[r]=x;
+    }
+    else if (r == N - 1)
+    {
+        r = 0;
+        deque[r]=x;
+    }
+    else{
+        r++;
+    deque[r]=x;}
+}
+void dequeuefront()
+{
+    if (f == -1 && r == -1)
+    {
+        cout << "underflow!!" << endl;
+    }
+    else if (f == r)
+    {
+        cout << "dequeued value is:" << deque[f] << endl;
+        f=r=-1;
+    }
+    else if (f == N - 1)
+    {
+        cout << "dequeued value is:" << deque[f] << endl;
+        f = 0;
+    }
+    else
+    {
+        cout << "dequeued value is:" << deque[f] << endl;
+        f++;
+    }
+}
+void dequeuerear()
+{
+    if (f == -1 && r == -1)
+    {
+        cout << "underflow!!" << endl;
+    }
+    else if (f == r)
+    {
+        cout << "dequeued value is:" << deque[r] << endl;
+        f=r=-1;
+    }
+    else if (r == 0)
+    {
+        cout << "dequeued value is:" << deque[r] << endl;
+        r = N-1;
+    }
+    else
+    {
+        cout << "dequeued value is:" << deque[r] << endl;
+        r--;
+    }
+}
+void display(){
+     if (f == -1 && r == -1)
+    {
+        cout << "underflow!!" << endl;
+    }else{
+    cout<<"deque is:";
+    int i=f;
+    while(i!=r){
+        cout<<deque[i]<<" ";
+        i=(i+1)%N;
+    }cout<<deque[r]<<endl;}
+}
+void getfront(){
+    if (f == -1 && r == -1)
+    {
+        cout << "underflow!!" << endl;
+    }
+    else
+    cout<<"front value is:"<<deque[f]<<endl;
+}
+void getrear(){
+    if (f == -1 && r == -1)
+    {
+        cout << "underflow!!" << endl;
+    }
+    else
+    cout<<"rear value is:"<<deque[r]<<endl;
+}
+int main(){
+    enqueuefront(2);
+    enqueuefront(5);
+    enqueuerear(-1);
+    enqueuerear(0);
+    enqueuefront(7);
+    display();
+
+    dequeuefront();
+    dequeuerear();
+    dequeuefront();
 }
