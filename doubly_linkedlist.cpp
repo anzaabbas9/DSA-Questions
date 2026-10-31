@@ -150,7 +150,138 @@ void insert_after_pos() {
 
     temp->next = new_node;
 }
+// delete at begning
+void delete_at_beg(){
+    if(head==nullptr){
+        cout<<"empty !!";
+    }
+        node* temp=head;
+     if(head==tail){
+        head=nullptr;
+        tail=nullptr;
+    }else{
+    head=head->next;
+    head->prev=nullptr;}
+    delete temp;
+}
+//delete at end
+void delete_at_end(){
+       node* temp=tail;
+        if(head==nullptr){
+        cout<<"list is empty !!";
+    }else if(head==tail){
+        head=tail=NULL;
+    }
+    else{
+       tail->prev->next=nullptr;
+       tail=tail->prev;
+       delete temp;
 
+}}
+//delete at a position
+void delete_at_pos() {
+    if (head == NULL) {
+        cout << "List is empty!\n";
+        return;
+    }
+
+    int pos, count = 0;
+    node* temp = head;
+
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+
+    cout << "Enter position you want to delete: ";
+    cin >> pos;
+
+    if (pos < 1 || pos > count) {
+        cout << "Invalid position!\n";
+        return;
+    }
+
+    if (pos == 1) {
+        delete_at_beg();
+        return;
+    }
+
+    if (pos == count) {
+        delete_at_end();
+        return;
+    }
+
+    temp = head;
+
+    for (int i = 1; i < pos; i++) {
+        temp = temp->next;
+    }
+
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+
+    delete temp;
+}
+// delete after position
+void delete_after_pos() {
+    if (head == NULL) {
+        cout << "List is empty!\n";
+        return;
+    }
+
+    int pos, count = 0;
+    node* temp = head;
+
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+
+    cout << "Enter position after which you want to delete: ";
+    cin >> pos;
+
+    if (pos < 1 || pos >= count) {
+        cout << "Invalid position! No node exists after this position.\n";
+        return;
+    }
+
+    temp = head;
+
+    for (int i = 1; i < pos; i++) {
+        temp = temp->next;
+    }
+
+    node* current = temp->next;
+
+    temp->next = current->next;
+
+    if (current->next != NULL) {
+        current->next->prev = temp;
+    }
+    else {
+        tail = temp;
+    }
+
+    delete current;
+}
+//reverse list
+void reverse(){
+    if(head==NULL){
+        cout<<"list is empty!!";
+    }
+     node*temp=head;
+    node*next_node=NULL;
+    while(temp!=NULL){
+        next_node=temp->next;
+       temp->next=temp->prev;
+       temp->prev=next_node;
+       temp=next_node;
+    }
+    temp=head;
+    head=tail;
+    tail=temp;
+
+}
 // Display the list
 void display() {
     node* temp = head;
@@ -175,7 +306,7 @@ int main() {
         create();
     }
 
-    display();
+    /*display();
 
     insert_at_beg();
     display();
@@ -187,6 +318,21 @@ int main() {
     display();
 
     insert_after_pos();
+    display();
+
+    delete_at_beg();
+    display();
+
+    delete_at_end();
+    display();
+
+    delete_at_pos();
+    display();
+
+    delete_after_pos();
+    display();*/
+
+    reverse();
     display();
 
     return 0;
