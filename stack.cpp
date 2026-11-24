@@ -1,98 +1,154 @@
-﻿#include <iostream>
+/*#include <iostream>
 using namespace std;
 
-const int SIZE = 5;
-int top = -1;
-int stack[SIZE];
-
-void push();
-void pop();
-void peek();
-void display();
-
-int main() {
-    int ch;
-
-    do {
-        cout << "\nMenu:\n";
-        cout << "1. push()\n";
-        cout << "2. pop()\n";
-        cout << "3. peek()\n";
-        cout << "4. display()\n";
-        cout << "0. exit\n";
-        cout << "Enter your choice: ";
-        cin >> ch;
-
-        switch (ch) {
-            case 1:
-                push();
-                break;
-            case 2:
-                pop();
-                break;
-            case 3:
-                peek();
-                break;
-            case 4:
-                display();
-                break;
-            case 0:
-                cout << "Exiting...\n";
-                break;
-            default:
-                cout << "Invalid choice!!\n";
-        }
-    } while (ch != 0);
-
-    return 0;
+#define N 5
+int stack[N];
+int top=-1;
+ void push(int x){
+if(top==N-1){
+    cout<<"overflow!!"<<endl;
+    return;
 }
-
-void push() {
-    int x;
-
-    if (top >= SIZE - 1) {
-        cout << "Overflow!!\n";
-        return;
-    }
-
-    cout << "Enter value to insert: ";
-    cin >> x;
+else {
     top++;
-    stack[top] = x;
-    cout << "Inserted: " << x << endl;
+    stack[top]=x;
+    
 }
+ }
 
-void pop() {
-    int item;
-
-    if (top == -1) {
-        cout << "Underflow!!\n";
+ void pop(){
+    if(top==-1){
+        cout<<"underflow!!"<<endl;
         return;
     }
-
-    item = stack[top];
-    cout << "Popped item is: " << item << endl;
-    top--;
-}
-
-void peek() {
-    if (top == -1) {
-        cout << "Stack is empty\n";
+    else{
+        cout<<"poped element is : "<< stack[top]<<endl;
+        top--;
+    }
+ }
+ void peek(){
+     if(top==-1){
+        cout<<"stack is empty!!"<<endl;
         return;
     }
+    else{
+       cout<<"top element is : "<< stack[top]<<endl; 
+ }}
 
-    cout << "Top item is: " << stack[top] << endl;
+ void display(){
+     if(top==-1){
+        cout<<"stack is empty!!"<<endl;
+        return;
+    }cout<<"stack is:";
+    for(int i=top;i>=0;i--){
+        cout<<stack[i]<<" ";
+    }cout<<endl;
+ }
+
+ int main(){
+    push(5);
+    push(6);
+    push(7);
+    push(8);
+    push(9);
+    pop();
+    pop();
+    peek();
+    display();
+ }*/
+//******************************************************************
+/*#include<iostream>
+#include<string>
+using namespace std;
+#define N 5
+char stack1[N];
+int top=-1;
+void push(char c){
+if(top==N-1){
+    cout<<"overflow!!"<<endl;
+    return;
+}
+else {
+    top++;
+    stack1[top]=c;
+    
+}
+ }
+char pop() {
+    if (top == -1) {
+        cout << "Underflow!!" << endl;
+        return '\0';
+    }
+    else {
+        char c = stack1[top];
+        top--;
+        return c;
+    }
+}
+int main(){string s;
+    cout<<"enter string:";
+    cin>>s;
+    for(int i=0;i<s.length();i++){
+        push(s[i]);
+    }cout << "Reversed string: ";
+    while(top!=-1){
+        cout<<pop();
+    }
+}*/
+#include<iostream>
+#include<string>
+using namespace std;
+#define N 10
+char stack1[N];
+int top=-1;
+void push(char c){
+if(top==N-1){
+    cout<<"overflow!!"<<endl;
+    return;
+}
+else {
+    top++;
+    stack1[top]=c;
+    
+}
+ }
+ void pop() {
+    if (top == -1) {
+        cout << "Underflow!!" << endl;
+        return ;
+    }
+    else {
+        char c = stack1[top];
+        top--;
+        
+    }
+}
+int main(){
+    string exp;
+    bool balanced=true;
+    cout<<"enter an expression:";
+    cin>>exp;
+    for(int i=0;i<exp.length();i++){
+        if(exp[i]=='('){
+                push(exp[i]);
+        } 
+        else if(exp[i]==')'){
+            if(top==-1){
+                balanced=false;
+                break;
+            }
+            else
+                pop();
+        }
+    }
+    if (top != -1) {
+    balanced = false;
 }
 
-void display() {
-    if (top == -1) {
-        cout << "Stack is empty!!\n";
-        return;
-    }
-
-    cout << "Stack: ";
-    for (int i = top; i >= 0; i--) {
-        cout << stack[i] << " ";
-    }
-    cout << endl;
+if (balanced == true) {
+    cout << "Balanced";
+}
+else {
+    cout << "Not balanced";
+}
 }

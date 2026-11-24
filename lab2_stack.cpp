@@ -1,0 +1,165 @@
+﻿/*#include <iostream>
+using namespace std;
+
+const int SIZE = 5;
+int top = -1;
+int stack[SIZE];
+
+void push();
+void pop();
+void peek();
+void display();
+
+int main() {
+    int ch;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. push()\n";
+        cout << "2. pop()\n";
+        cout << "3. peek()\n";
+        cout << "4. display()\n";
+        cout << "0. exit\n";
+        cout << "Enter your choice: ";
+        cin >> ch;
+
+        switch (ch) {
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                peek();
+                break;
+            case 4:
+                display();
+                break;
+            case 0:
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice!!\n";
+        }
+    } while (ch != 0);
+
+    return 0;
+}
+
+void push() {
+    int x;
+
+    if (top >= SIZE - 1) {
+        cout << "Overflow!!\n";
+        return;
+    }
+
+    cout << "Enter value to insert: ";
+    cin >> x;
+    top++;
+    stack[top] = x;
+    cout << "Inserted: " << x << endl;
+}
+
+void pop() {
+    int item;
+
+    if (top == -1) {
+        cout << "Underflow!!\n";
+        return;
+    }
+
+    item = stack[top];
+    cout << "Popped item is: " << item << endl;
+    top--;
+}
+
+void peek() {
+    if (top == -1) {
+        cout << "Stack is empty\n";
+        return;
+    }
+
+    cout << "Top item is: " << stack[top] << endl;
+}
+
+void display() {
+    if (top == -1) {
+        cout << "Stack is empty!!\n";
+        return;
+    }
+
+    cout << "Stack: ";
+    for (int i = top; i >= 0; i--) {
+        cout << stack[i] << " ";
+    }
+    cout << endl;
+}*/
+//***********************PALINDROME WORD*************************
+/*#include<iostream>
+using namespace std;
+int main(){
+    char a[5]={'m','o','d','e','m'};
+    char b[5];
+    int top=-1;
+    for(int i=0;i<5;i++){
+       top++;
+       b[top]=a[i];
+    }
+    bool ispalindrome=true;
+    for(int j=0;j<5;j++){
+        if(b[top--]!=a[j]){
+        ispalindrome=false;
+        break;
+        }
+    }
+    if(ispalindrome){
+        cout<<"palindrome!!";
+    }else
+    cout<<"not a palindrome!!";
+    return 0;
+}*/
+#include <iostream>
+#include<stack>
+#include<string>
+using namespace std;
+
+bool isbalanced(const string& expression) {
+    stack<char> braces;
+
+    for (char character : expression) {
+        if (character == '(' || character == '[' || character == '{') {
+            braces.push(character);
+        } else if (character == ')' || character == ']' || character == '}') {
+            if (braces.empty()) {
+                return false;
+            }
+
+            char opening = braces.top();
+            braces.pop();
+
+            if ((character == ')' && opening != '(') ||
+                (character == ']' && opening != '[') ||
+                (character == '}' && opening != '{')) {
+                return false;
+            }
+        }
+    }
+
+    return braces.empty();
+}
+
+int main() {
+    string expression;
+    cout << "Enter an expression: ";
+    getline(cin, expression);
+
+    if (isbalanced(expression)) {
+        cout << "Balanced expression.\n";
+    } else {
+        cout << "Not a balanced expression.\n";
+    }
+
+    return 0;
+}
